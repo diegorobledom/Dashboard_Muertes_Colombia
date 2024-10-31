@@ -1,8 +1,9 @@
 import dash
-from dash import dcc, html
+from dash import Dash, dcc, html
 import pandas as pd
 import plotly.express as px
 import geojson  # Importar el archivo geojson.py que maneja la descarga y carga
+import os
 
 # Cargar datos desde el archivo Excel
 file_path = 'Anexo4.Covid-19_CE_15-03-23.xlsx'
@@ -88,4 +89,4 @@ app.layout = html.Div([
 
 # Ejecutar el servidor
 if __name__ == '__main__':
-    app.run_server(debug=True)
+    app.run_server(debug=True, port=int(os.environ.get("PORT", 8080)), host='0.0.0.0')
